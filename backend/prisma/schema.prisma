@@ -1,0 +1,176 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  role         String    @default("user")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  networks     Network[]
+  sites        Site[]
+
+  @@map("users")
+}
+
+model Network {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  ownerId     String     @map("owner_id")
+  owner       User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  sites       Site[]
+  links       SiteLink[]
+
+  @@index([ownerId])
+  @@map("networks")
+}
+
+model SiteTemplate {
+  id                    String   @id @default(cuid())
+  name                  String
+  htmlBody              String   @map("html_body")
+  defaultMetaTitle      String   @map("default_meta_title")
+  defaultMetaDescription String  @map("default_meta_description")
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+  sites                 Site[]
+
+  @@map("site_templates")
+}
+
+model Site {
+  id          String         @id @default(cuid())
+  networkId   String         @map("network_id")
+  ownerId     String         @map("owner_id")
+  templateId  String?        @map("template_id")
+  domain      String
+  title       String
+  niche       String?
+  status      String         @default("draft")
+  network     Network        @relation(fields: [networkId], references: [id], onDelete: Cascade)
+  owner       User           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  template    SiteTemplate?  @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+  tags        SiteTag[]
+  seoSnapshots SeoSnapshot[]
+  uptimeChecks UptimeCheck[]
+  keywords      SiteKeyword[]
+  behavioralSnapshots BehavioralSnapshot[]
+  linksFrom   SiteLink[]     @relation("LinkFrom")
+  linksTo     SiteLink[]     @relation("LinkTo")
+
+  @@unique([ownerId, domain])
+  @@index([networkId])
+  @@index([ownerId])
+  @@index([status])
+  @@map("sites")
+}
+
+model Tag {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  sites     SiteTag[]
+
+  @@map("tags")
+}
+
+model SiteTag {
+  siteId String @map("site_id")
+  tagId  String @map("tag_id")
+  site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([siteId, tagId])
+  @@map("site_tags")
+}
+
+model SeoSnapshot {
+  id              String   @id @default(cuid())
+  siteId          String   @map("site_id")
+  checkedAt       DateTime @default(now()) @map("checked_at")
+  pageTitle       String?  @map("page_title")
+  metaDescription String?  @map("meta_description")
+  h1              String?
+  canonical       String?
+  robotsTxtOk     Boolean  @default(false) @map("robots_txt_ok")
+  seoScore        Int      @default(0) @map("seo_score")
+  site            Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+
+  @@index([siteId])
+  @@map("seo_snapshots")
+}
+
+model UptimeCheck {
+  id         String   @id @default(cuid())
+  siteId     String   @map("site_id")
+  checkedAt  DateTime @default(now()) @map("checked_at")
+  statusCode Int?     @map("status_code")
+  responseMs Int?     @map("response_ms")
+  isUp       Boolean  @default(false) @map("is_up")
+  site       Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+
+  @@index([siteId])
+  @@map("uptime_checks")
+}
+
+model SiteLink {
+  id         String   @id @default(cuid())
+  networkId  String   @map("network_id")
+  fromSiteId String   @map("from_site_id")
+  toSiteId   String   @map("to_site_id")
+  anchorText String   @map("anchor_text")
+  linkType   String   @default("dofollow") @map("link_type")
+  createdAt  DateTime @default(now()) @map("created_at")
+  network    Network  @relation(fields: [networkId], references: [id], onDelete: Cascade)
+  fromSite   Site     @relation("LinkFrom", fields: [fromSiteId], references: [id], onDelete: Cascade)
+  toSite     Site     @relation("LinkTo", fields: [toSiteId], references: [id], onDelete: Cascade)
+
+  @@unique([fromSiteId, toSiteId])
+  @@index([networkId])
+  @@map("site_links")
+}
+
+model SiteKeyword {
+  id           String   @id @default(cuid())
+  siteId       String   @map("site_id")
+  keyword      String
+  googleVolume Int      @default(0) @map("google_volume")
+  yandexVolume Int      @default(0) @map("yandex_volume")
+  competition  Int      @default(50)
+  difficulty   Int      @default(50)
+  intent       String   @default("informational")
+  createdAt    DateTime @default(now()) @map("created_at")
+  site         Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+
+  @@unique([siteId, keyword])
+  @@index([siteId])
+  @@map("site_keywords")
+}
+
+model BehavioralSnapshot {
+  id              String   @id @default(cuid())
+  siteId          String   @map("site_id")
+  checkedAt       DateTime @default(now()) @map("checked_at")
+  bounceRate      Float    @map("bounce_rate")
+  avgTimeSec      Int      @map("avg_time_sec")
+  pagesPerSession Float    @map("pages_per_session")
+  scrollDepth     Int      @map("scroll_depth")
+  returnRate      Float    @map("return_rate")
+  engagementScore Int      @default(0) @map("engagement_score")
+  site            Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+
+  @@index([siteId])
+  @@map("behavioral_snapshots")
+}
