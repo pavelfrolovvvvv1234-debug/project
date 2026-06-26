@@ -37,7 +37,7 @@ export function LinkMatrix({
 
   return (
     <Card className="overflow-x-auto">
-      <h3 className="font-semibold mb-4">Матрица перелинковки</h3>
+      <h3 className="font-semibold mb-4">Матрица ссылок</h3>
       <table className="w-full text-sm border-collapse min-w-[640px]">
         <thead>
           <tr>

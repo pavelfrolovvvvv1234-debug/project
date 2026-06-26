@@ -3,8 +3,7 @@ export const openApiSpec = {
   info: {
     title: "SiteNet Manager API",
     version: "1.0.0",
-    description:
-      "API для управления сетью сайтов, SEO-анализа и планирования перелинковки (практика ПМ11)",
+    description: "API SiteNet Manager",
   },
   servers: [{ url: "/api" }],
   components: {

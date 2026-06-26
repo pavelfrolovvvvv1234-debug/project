@@ -272,8 +272,7 @@ async function main() {
     });
   }
 
-  console.log("Seed complete");
-  console.log("Demo login: demo@college.local / Demo123!");
+  console.log("seed ok — demo@college.local / Demo123!");
 }
 
 main()

@@ -2,7 +2,7 @@
   "name": "site-network-manager",
   "version": "1.0.0",
   "private": true,
-  "description": "SEO site network management panel for college practice",
+  "description": "SEO site network panel",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
     "build": "npm run build --prefix backend && npm run build --prefix frontend",

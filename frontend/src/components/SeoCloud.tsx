@@ -95,9 +95,7 @@ export function SeoCloud({
 
       <Card>
         <h3 className="font-semibold mb-4">SEO-облако ключевых слов</h3>
-        <p className="text-xs text-slate-500 mb-4">
-          Размер кнопки = популярность запроса. Нажми на ключ для деталей.
-        </p>
+        <p className="text-xs text-slate-500 mb-4">Крупнее — чаще ищут. Кликни по ключу.</p>
         <div className="flex flex-wrap gap-2 justify-center items-center min-h-[120px] p-4 rounded-lg bg-slate-950/50 border border-slate-800">
           {keywords.map((k) => (
             <button
@@ -147,21 +145,21 @@ export function SeoCloud({
               <p className={`text-2xl font-bold mt-1 ${pctClass(selected.competition)}`}>
                 {selected.competition}%
               </p>
-              <p className="text-[10px] text-slate-500">насыщенность SERP</p>
+              <p className="text-[10px] text-slate-500">в выдаче</p>
             </div>
             <div className="rounded-lg bg-slate-950/60 p-4 text-center border border-slate-800">
               <p className="text-xs text-slate-400">Сложность продвижения</p>
               <p className={`text-2xl font-bold mt-1 ${pctClass(selected.difficulty)}`}>
                 {selected.difficulty}%
               </p>
-              <p className="text-[10px] text-slate-500">усилия для топа</p>
+              <p className="text-[10px] text-slate-500">в топ</p>
             </div>
             <div className="rounded-lg bg-slate-950/60 p-4 text-center border border-slate-800 sm:col-span-2 lg:col-span-1">
               <p className="text-xs text-slate-400">Потенциал</p>
               <p className="text-2xl font-bold text-emerald-300 mt-1">
                 {Math.max(0, 100 - Math.round((selected.competition + selected.difficulty) / 2))}%
               </p>
-              <p className="text-[10px] text-slate-500">оценка входа в нишу</p>
+              <p className="text-[10px] text-slate-500">сводная оценка</p>
             </div>
           </div>
         </Card>

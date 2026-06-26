@@ -199,7 +199,7 @@ export function NetworkDetailPage() {
       {tab === "matrix" && matrix && (
         <div className="space-y-6">
           <Card>
-            <h3 className="font-semibold mb-4">Добавить перелинковку</h3>
+            <h3 className="font-semibold mb-4">Новая ссылка</h3>
             <form onSubmit={createLink} className="grid md:grid-cols-4 gap-3">
               <select
                 value={fromSiteId}

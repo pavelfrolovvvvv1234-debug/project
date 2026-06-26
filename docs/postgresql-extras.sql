@@ -1,6 +1,5 @@
-# PostgreSQL extras for production / ПМ11 report
-# Run after Prisma migrate on PostgreSQL:
-#   psql $DATABASE_URL -f docs/postgresql-extras.sql
+# PostgreSQL: view, function, trigger
+# psql $DATABASE_URL -f docs/postgresql-extras.sql
 
 -- View: link matrix summary
 CREATE OR REPLACE VIEW v_network_link_matrix AS
@@ -54,5 +53,4 @@ CREATE TRIGGER trg_prevent_self_link
   FOR EACH ROW
   EXECUTE FUNCTION prevent_self_site_link();
 
--- Backup command (document in report):
--- pg_dump $DATABASE_URL > backup_sitenet_$(date +%Y%m%d).sql
+-- Backup: pg_dump $DATABASE_URL > backup.sql

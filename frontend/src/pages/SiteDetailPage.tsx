@@ -65,11 +65,11 @@ export function SiteDetailPage() {
           { method: "POST" }
         );
         setBehavioralTasks(data.tasks);
-        push("Анализ поведенческих факторов выполнен", "success");
+        push("Готово", "success");
         await load();
       } else {
         await api(`/sites/${id}/${type}-check`, { method: "POST" });
-        push(type === "seo" ? "SEO-анализ выполнен" : "Проверка uptime выполнена", "success");
+        push(type === "seo" ? "SEO готов" : "Uptime проверен", "success");
         await load();
       }
     } catch (e) {
@@ -209,7 +209,7 @@ export function SiteDetailPage() {
               </div>
             </dl>
           ) : (
-            <p className="text-slate-500 text-sm">Запустите SEO-анализ</p>
+            <p className="text-slate-500 text-sm">Пока нет данных — нажми SEO-анализ</p>
           )}
         </Card>
 
@@ -235,7 +235,7 @@ export function SiteDetailPage() {
               </div>
             </dl>
           ) : (
-            <p className="text-slate-500 text-sm">Запустите проверку uptime</p>
+            <p className="text-slate-500 text-sm">Пока нет данных — нажми проверку uptime</p>
           )}
         </Card>
 

@@ -56,20 +56,17 @@ export function BehavioralFactorsPanel({
         <div>
           <h3 className="text-lg font-semibold">Работа с поведенческими факторами</h3>
           <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-            Легальная оптимизация UX и контента: удержание, глубина просмотра, скорость. Без накрутки
-            кликов и ботов — только улучшение качества сайта для реальных пользователей.
+            Метрики вовлечённости и задачи по доработке контента и интерфейса.
           </p>
         </div>
         <Button onClick={onAnalyze} disabled={loading}>
-          {loading ? "Анализ..." : snapshot ? "Обновить анализ ПФ" : "Запустить анализ ПФ"}
+          {loading ? "Анализ..." : snapshot ? "Обновить" : "Запустить анализ"}
         </Button>
       </div>
 
       {!snapshot ? (
         <Card>
-          <p className="text-slate-500 text-sm">
-            Запустите анализ, чтобы получить метрики вовлечённости и план работ по поведенческим факторам.
-          </p>
+          <p className="text-slate-500 text-sm">Нажми кнопку выше, чтобы посчитать метрики.</p>
         </Card>
       ) : (
         <>
@@ -103,7 +100,7 @@ export function BehavioralFactorsPanel({
           </div>
 
           <Card>
-            <h4 className="font-semibold mb-3">План улучшения ПФ (white-hat)</h4>
+            <h4 className="font-semibold mb-3">Что улучшить</h4>
             <ul className="space-y-3">
               {tasks.map((task) => (
                 <li
@@ -115,7 +112,7 @@ export function BehavioralFactorsPanel({
                     <p className="text-sm text-slate-400 mt-1">{task.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 items-center shrink-0">
-                    <Badge color="cyan">эффект: {impactLabel(task.impact)}</Badge>
+                    <Badge color="cyan">{impactLabel(task.impact)}</Badge>
                     <Badge color={taskStatusColor(task.status)}>{taskStatusLabel(task.status)}</Badge>
                   </div>
                 </li>

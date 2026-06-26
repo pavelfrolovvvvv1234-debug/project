@@ -45,7 +45,7 @@ export function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h2 className="text-2xl font-bold">Главная панель</h2>
-        <p className="text-slate-400 text-sm mt-1">Обзор SEO-сети и мониторинга доступности</p>
+        <p className="text-slate-400 text-sm mt-1">Сводка по сети</p>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">

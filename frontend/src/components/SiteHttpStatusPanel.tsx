@@ -18,7 +18,7 @@ function httpStatusMeta(code: number | null, isUp: boolean) {
     return { badge: "—", color: "slate" as const, label: "Не проверен", positive: false };
   }
   if (code >= 200 && code < 300) {
-    return { badge: String(code), color: "green" as const, label: "OK — сайт доступен", positive: true };
+    return { badge: String(code), color: "green" as const, label: "OK", positive: true };
   }
   if (code >= 300 && code < 400) {
     return { badge: String(code), color: "yellow" as const, label: "Редирект", positive: true };
@@ -62,9 +62,7 @@ export function SiteHttpStatusPanel({
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
           <h3 className="font-semibold">HTTP-статус сайтов</h3>
-          <p className="text-xs text-slate-500 mt-1">
-            200/301 — доступен · 404/5xx — проблема
-          </p>
+          <p className="text-xs text-slate-500 mt-1">200 и 301 — норм, 404 и 5xx — нет</p>
         </div>
         <Button onClick={onCheckAll} disabled={checking}>
           {checking ? "Проверка..." : "Проверить все"}

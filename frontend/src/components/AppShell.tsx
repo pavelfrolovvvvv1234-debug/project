@@ -31,7 +31,7 @@ export function AppShell() {
     <>
       <div className="mb-8">
         <h1 className="text-lg font-bold text-cyan-400">SiteNet Manager</h1>
-        <p className="text-xs text-slate-500">Панель SEO-сети</p>
+        <p className="text-xs text-slate-500">SiteNet</p>
         {user.role === "admin" && (
           <p className="text-xs text-amber-400 mt-1">Режим администратора</p>
         )}

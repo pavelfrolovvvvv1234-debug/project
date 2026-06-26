@@ -48,8 +48,8 @@ export function NetworksPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold">SEO-сети</h2>
-        <p className="text-slate-400 text-sm">Группы связанных сайтов для перелинковки</p>
+        <h2 className="text-2xl font-bold">Сети</h2>
+        <p className="text-slate-400 text-sm">Группы сайтов</p>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
@@ -109,7 +109,7 @@ export function NetworksPage() {
           ))}
           {networks.length === 0 && (
             <Card>
-              <p className="text-slate-500 text-sm">Создайте первую SEO-сеть слева</p>
+              <p className="text-slate-500 text-sm">Создай сеть слева</p>
             </Card>
           )}
         </div>

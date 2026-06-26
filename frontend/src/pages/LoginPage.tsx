@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Button, Card, Input, Layout } from "../components/Layout";
 
@@ -34,9 +34,7 @@ export function LoginPage() {
           <h2 className="text-2xl font-bold mb-1">
             {mode === "login" ? "Вход" : "Регистрация"}
           </h2>
-          <p className="text-sm text-slate-400 mb-6">
-            Панель управления SEO-сетью сайтов
-          </p>
+          <p className="text-sm text-slate-400 mb-6">SiteNet Manager</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="text-sm text-slate-400">Email</label>
@@ -71,12 +69,7 @@ export function LoginPage() {
           >
             {mode === "login" ? "Нет аккаунта? Регистрация" : "Уже есть аккаунт? Войти"}
           </button>
-          <p className="mt-4 text-xs text-slate-500">
-            Демо: demo@college.local / Demo123! —{" "}
-            <Link to="/" className="text-cyan-500">
-              после входа
-            </Link>
-          </p>
+          <p className="mt-4 text-xs text-slate-500">Тест: demo@college.local / Demo123!</p>
         </Card>
       </div>
     </Layout>

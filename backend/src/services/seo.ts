@@ -39,7 +39,7 @@ export async function analyzeSeo(domain: string): Promise<SeoResult> {
 
   try {
     const response = await fetch(url, {
-      headers: { "User-Agent": "SiteNet-Manager/1.0 (College Practice SEO Bot)" },
+      headers: { "User-Agent": "SiteNet-Manager/1.0" },
       signal: AbortSignal.timeout(12000),
     });
 
