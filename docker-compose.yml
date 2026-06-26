@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sitenet
+      POSTGRES_PASSWORD: sitenet
+      POSTGRES_DB: sitenet
+    ports:
+      - "5432:5432"
+    volumes:
+      - sitenet_pg:/var/lib/postgresql/data
+
+volumes:
+  sitenet_pg:
