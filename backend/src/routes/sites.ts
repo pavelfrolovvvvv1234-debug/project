@@ -172,7 +172,13 @@ router.post("/:id/seo-check", async (req, res) => {
   const snapshot = await prisma.seoSnapshot.create({
     data: {
       siteId: site.id,
-      ...result,
+      pageTitle: result.pageTitle,
+      metaDescription: result.metaDescription,
+      h1: result.h1,
+      canonical: result.canonical,
+      robotsTxtOk: result.robotsTxtOk,
+      seoScore: result.seoScore,
+      auditDetails: result.auditDetails as object,
     },
   });
 

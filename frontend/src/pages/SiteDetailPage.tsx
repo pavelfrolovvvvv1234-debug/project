@@ -6,6 +6,7 @@ import { Badge, Button, Card, Input } from "../components/Layout";
 import { PageLoader } from "../components/PageLoader";
 import { SeoCloud } from "../components/SeoCloud";
 import { BehavioralFactorsPanel } from "../components/BehavioralFactorsPanel";
+import { SeoAuditPanel } from "../components/SeoAuditPanel";
 
 type SiteDetail = Site & {
   seoSnapshots: SeoSnapshot[];
@@ -263,6 +264,13 @@ export function SiteDetailPage() {
           </ul>
         </Card>
       </div>
+
+      {latestSeo && (
+        <div>
+          <h3 className="text-lg font-semibold mb-4">SEO-аудит</h3>
+          <SeoAuditPanel snapshot={latestSeo} />
+        </div>
+      )}
 
       {keywordData && (
         <div>

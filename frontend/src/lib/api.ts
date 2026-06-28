@@ -55,6 +55,54 @@ export type Site = {
   uptimeChecks?: UptimeCheck[];
 };
 
+export type SeoAuditDetails = {
+  fetchOk: boolean;
+  fetchError?: string;
+  statusCode?: number;
+  openGraph: {
+    title: string | null;
+    description: string | null;
+    image: string | null;
+    type: string | null;
+    twitterCard: string | null;
+    twitterTitle: string | null;
+  };
+  checklist: {
+    h1Count: number;
+    h2Count: number;
+    wordCount: number;
+    internalLinks: number;
+    externalLinks: number;
+    imagesTotal: number;
+    imagesMissingAlt: number;
+    hasViewport: boolean;
+    hasLang: boolean;
+    items: { id: string; label: string; ok: boolean; hint?: string }[];
+  };
+  robots: {
+    ok: boolean;
+    hasDisallow: boolean;
+    sitemapUrl: string | null;
+    preview: string | null;
+  };
+  sitemap: {
+    ok: boolean;
+    url: string | null;
+    urlCount: number;
+    domainInSitemap: boolean;
+  };
+  tech: {
+    https: boolean;
+    responseMs: number;
+    pageSizeKb: number;
+    finalUrl: string | null;
+  };
+  structuredData: {
+    hasJsonLd: boolean;
+    types: string[];
+  };
+};
+
 export type SeoSnapshot = {
   id: string;
   checkedAt: string;
@@ -64,6 +112,7 @@ export type SeoSnapshot = {
   canonical?: string | null;
   robotsTxtOk: boolean;
   seoScore: number;
+  auditDetails?: SeoAuditDetails | null;
 };
 
 export type UptimeCheck = {

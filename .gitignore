@@ -6,3 +6,8 @@ dist/
 *.db-journal
 .DS_Store
 .vite/
+docs/*-xml/
+docs/template-*.docx
+docs/template-*.zip
+docs/pm*-text.txt
+docs/extract-docx.js

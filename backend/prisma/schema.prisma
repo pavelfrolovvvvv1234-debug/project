@@ -106,6 +106,7 @@ model SeoSnapshot {
   canonical       String?
   robotsTxtOk     Boolean  @default(false) @map("robots_txt_ok")
   seoScore        Int      @default(0) @map("seo_score")
+  auditDetails    Json?    @map("audit_details")
   site            Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
 
   @@index([siteId])
