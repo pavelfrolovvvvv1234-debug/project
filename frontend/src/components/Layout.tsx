@@ -7,7 +7,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-cyan-400">SiteNet Manager</h1>
-            <p className="text-xs text-slate-400">SEO Site Network Panel</p>
+            <p className="text-xs text-slate-400">панель сети сайтов</p>
           </div>
         </div>
       </header>

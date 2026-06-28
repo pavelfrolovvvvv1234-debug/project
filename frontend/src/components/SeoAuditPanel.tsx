@@ -9,17 +9,14 @@ export function SeoAuditPanel({ snapshot }: { snapshot: SeoSnapshot }) {
   const audit = snapshot.auditDetails;
   if (!audit) {
     return (
-      <p className="text-slate-500 text-sm">
-        Запусти SEO-анализ ещё раз — старый снимок без расширенного аудита.
-      </p>
+      <p className="text-slate-500 text-sm">Нет данных. Нажми «Проверить страницу».</p>
     );
   }
 
   if (!audit.fetchOk && audit.fetchError) {
     return (
       <Card className="border-rose-900/50">
-        <p className="text-rose-300 text-sm">Сайт не открылся: {audit.fetchError}</p>
-        <p className="text-slate-500 text-xs mt-2">Проверь домен или попробуй реальный сайт (github.com, wikipedia.org).</p>
+        <p className="text-rose-300 text-sm">Не открылось: {audit.fetchError}</p>
       </Card>
     );
   }
@@ -101,7 +98,7 @@ export function SeoAuditPanel({ snapshot }: { snapshot: SeoSnapshot }) {
       </div>
 
       <Card>
-        <h4 className="font-semibold mb-3">SEO-чеклист</h4>
+        <h4 className="font-semibold mb-3">Чеклист</h4>
         <ul className="space-y-2">
           {audit.checklist.items.map((item) => (
             <li key={item.id} className="flex items-center justify-between gap-3 text-sm py-1 border-b border-slate-800/50">

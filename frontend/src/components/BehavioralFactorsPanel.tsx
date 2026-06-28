@@ -54,25 +54,22 @@ export function BehavioralFactorsPanel({
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="text-lg font-semibold">Работа с поведенческими факторами</h3>
-          <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-            Метрики вовлечённости и задачи по доработке контента и интерфейса.
-          </p>
+          <h3 className="text-lg font-semibold">Поведенческие метрики</h3>
         </div>
         <Button onClick={onAnalyze} disabled={loading}>
-          {loading ? "Анализ..." : snapshot ? "Обновить" : "Запустить анализ"}
+          {loading ? "..." : snapshot ? "Обновить" : "Считать"}
         </Button>
       </div>
 
       {!snapshot ? (
         <Card>
-          <p className="text-slate-500 text-sm">Нажми кнопку выше, чтобы посчитать метрики.</p>
+          <p className="text-slate-500 text-sm">Пока пусто.</p>
         </Card>
       ) : (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             <Card className="!p-4 text-center">
-              <p className="text-xs text-slate-400">Индекс вовлечённости</p>
+              <p className="text-xs text-slate-400">Вовлечённость</p>
               <p className="text-2xl font-bold text-emerald-300 mt-1">{snapshot.engagementScore}%</p>
             </Card>
             <Card className="!p-4 text-center">
@@ -100,7 +97,7 @@ export function BehavioralFactorsPanel({
           </div>
 
           <Card>
-            <h4 className="font-semibold mb-3">Что улучшить</h4>
+            <h4 className="font-semibold mb-3">Задачи</h4>
             <ul className="space-y-3">
               {tasks.map((task) => (
                 <li

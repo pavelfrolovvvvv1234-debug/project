@@ -138,7 +138,7 @@ export function SitesPage() {
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     {site.seoSnapshots?.[0] && (
-                      <Badge color="yellow">SEO {site.seoSnapshots[0].seoScore}%</Badge>
+                      <Badge color="yellow">{site.seoSnapshots[0].seoScore}%</Badge>
                     )}
                     <Badge
                       color={

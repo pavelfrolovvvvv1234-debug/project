@@ -143,19 +143,19 @@ function buildChecklist(
   const items = [
     {
       id: "title",
-      label: "Title (от 10 символов)",
+      label: "Title",
       ok: Boolean(pageTitle && pageTitle.length >= 10),
       hint: pageTitle ? `${pageTitle.length} симв.` : "не найден",
     },
     {
       id: "description",
-      label: "Meta description (от 50 символов)",
+      label: "Description",
       ok: Boolean(metaDescription && metaDescription.length >= 50),
       hint: metaDescription ? `${metaDescription.length} симв.` : "не найден",
     },
     {
       id: "h1-single",
-      label: "Один H1 на странице",
+      label: "Один H1",
       ok: h1Count === 1,
       hint: `найдено: ${h1Count}`,
     },
@@ -166,30 +166,30 @@ function buildChecklist(
     },
     {
       id: "h2",
-      label: "Есть подзаголовки H2",
+      label: "Есть H2",
       ok: h2Count >= 1,
       hint: `${h2Count} шт.`,
     },
     {
       id: "words",
-      label: "Достаточно текста (300+ слов)",
+      label: "Текст 300+ слов",
       ok: wordCount >= 300,
       hint: `${wordCount} слов`,
     },
     {
       id: "alt",
-      label: "У картинок есть alt",
+      label: "Alt у картинок",
       ok: imagesTotal === 0 || imagesMissingAlt === 0,
       hint: imagesMissingAlt > 0 ? `без alt: ${imagesMissingAlt}` : `${imagesTotal} img`,
     },
     {
       id: "viewport",
-      label: "Meta viewport (мобилка)",
+      label: "Viewport",
       ok: hasViewport,
     },
     {
       id: "lang",
-      label: "Атрибут lang у <html>",
+      label: "lang у html",
       ok: hasLang,
     },
   ];

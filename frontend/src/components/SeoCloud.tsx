@@ -94,8 +94,8 @@ export function SeoCloud({
       </div>
 
       <Card>
-        <h3 className="font-semibold mb-4">SEO-облако ключевых слов</h3>
-        <p className="text-xs text-slate-500 mb-4">Крупнее — чаще ищут. Кликни по ключу.</p>
+        <h3 className="font-semibold mb-4">Облако ключей</h3>
+        <p className="text-xs text-slate-500 mb-4">Крупнее — чаще ищут</p>
         <div className="flex flex-wrap gap-2 justify-center items-center min-h-[120px] p-4 rounded-lg bg-slate-950/50 border border-slate-800">
           {keywords.map((k) => (
             <button

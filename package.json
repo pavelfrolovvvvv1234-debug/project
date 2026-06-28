@@ -2,12 +2,13 @@
   "name": "site-network-manager",
   "version": "1.0.0",
   "private": true,
-  "description": "SEO site network panel",
+  "description": "Site network manager",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
     "build": "npm run build --prefix backend && npm run build --prefix frontend",
     "db:migrate": "npm run db:migrate --prefix backend",
     "db:seed": "npm run db:seed --prefix backend",
+    "db:extras": "echo Run on prod DB: psql DATABASE_URL -f docs/postgresql-extras.sql",
     "db:up": "docker compose up -d",
     "setup": "npm install --prefix backend && npm install --prefix frontend && npm run db:migrate && npm run db:seed"
   },

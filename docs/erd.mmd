@@ -1,0 +1,59 @@
+erDiagram
+  users ||--o{ networks : owns
+  users ||--o{ sites : owns
+  networks ||--o{ sites : contains
+  networks ||--o{ site_links : has
+  sites ||--o{ site_links : from
+  sites ||--o{ site_links : to
+  sites ||--o{ seo_snapshots : has
+  sites ||--o{ uptime_checks : has
+  sites ||--o{ site_keywords : has
+  sites ||--o{ behavioral_snapshots : has
+  sites }o--o| site_templates : uses
+  sites }o--o{ tags : tagged
+  site_tags }o--|| sites : site
+  site_tags }o--|| tags : tag
+
+  users {
+    string id PK
+    string email UK
+    string password_hash
+    string role
+  }
+  networks {
+    string id PK
+    string name
+    string owner_id FK
+  }
+  sites {
+    string id PK
+    string domain
+    string network_id FK
+    string owner_id FK
+  }
+  site_links {
+    string id PK
+    string from_site_id FK
+    string to_site_id FK
+    string network_id FK
+  }
+  seo_snapshots {
+    string id PK
+    string site_id FK
+    int seo_score
+  }
+  uptime_checks {
+    string id PK
+    string site_id FK
+    boolean is_up
+  }
+  site_keywords {
+    string id PK
+    string site_id FK
+    string keyword
+  }
+  behavioral_snapshots {
+    string id PK
+    string site_id FK
+    int engagement_score
+  }

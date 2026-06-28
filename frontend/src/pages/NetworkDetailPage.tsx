@@ -138,7 +138,7 @@ export function NetworkDetailPage() {
             <>
               <Badge color="cyan">{matrix.stats.siteCount} сайтов</Badge>
               <Badge color="green">{matrix.stats.linkCount} ссылок</Badge>
-              <Badge color="yellow">SEO {matrix.stats.avgSeoScore}%</Badge>
+              <Badge color="yellow">{matrix.stats.avgSeoScore}%</Badge>
             </>
           )}
           <Button variant="danger" onClick={deleteNetwork}>
@@ -152,7 +152,7 @@ export function NetworkDetailPage() {
           [
             ["sites", "Сайты"],
             ["matrix", "Матрица"],
-            ["seo", "SEO-облако"],
+            ["seo", "Ключи"],
             ["export", "Экспорт"],
             ["edit", "Редактировать"],
           ] as const

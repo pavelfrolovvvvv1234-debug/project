@@ -70,7 +70,7 @@ export function SiteDetailPage() {
         await load();
       } else {
         await api(`/sites/${id}/${type}-check`, { method: "POST" });
-        push(type === "seo" ? "SEO готов" : "Uptime проверен", "success");
+        push(type === "seo" ? "Готово" : "Uptime проверен", "success");
         await load();
       }
     } catch (e) {
@@ -145,7 +145,7 @@ export function SiteDetailPage() {
 
       <div className="flex flex-wrap gap-3">
         <Button onClick={() => runCheck("seo")} disabled={!!loading}>
-          {loading === "seo" ? "Анализ..." : "SEO-анализ"}
+          {loading === "seo" ? "..." : "Проверить страницу"}
         </Button>
         <Button variant="secondary" onClick={() => runCheck("uptime")} disabled={!!loading}>
           {loading === "uptime" ? "Проверка..." : "Проверка uptime"}
@@ -185,7 +185,7 @@ export function SiteDetailPage() {
 
       <div className="grid lg:grid-cols-2 gap-6">
         <Card>
-          <h3 className="font-semibold mb-4">SEO-снимок</h3>
+          <h3 className="font-semibold mb-4">Сводка</h3>
           {latestSeo ? (
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -210,7 +210,7 @@ export function SiteDetailPage() {
               </div>
             </dl>
           ) : (
-            <p className="text-slate-500 text-sm">Пока нет данных — нажми SEO-анализ</p>
+            <p className="text-slate-500 text-sm">Пока пусто</p>
           )}
         </Card>
 
@@ -267,14 +267,14 @@ export function SiteDetailPage() {
 
       {latestSeo && (
         <div>
-          <h3 className="text-lg font-semibold mb-4">SEO-аудит</h3>
+          <h3 className="text-lg font-semibold mb-4">Подробности</h3>
           <SeoAuditPanel snapshot={latestSeo} />
         </div>
       )}
 
       {keywordData && (
         <div>
-          <h3 className="text-lg font-semibold mb-4">Семантическое ядро сайта</h3>
+          <h3 className="text-lg font-semibold mb-4">Ключевые слова</h3>
           <SeoCloud
             keywords={keywordData.keywords}
             totals={keywordData.totals}

@@ -54,7 +54,7 @@ export function DashboardPage() {
         <StatCard label="HTTP 200" value={httpSummary.ok} hint="доступны" />
         <StatCard label="Недоступны" value={stats.downSites} />
         <StatCard label="Ссылки" value={stats.linkCount} />
-        <StatCard label="Средний SEO" value={`${stats.avgSeoScore}%`} />
+        <StatCard label="Ср. оценка" value={`${stats.avgSeoScore}%`} />
       </div>
 
       <SiteHttpStatusPanel
